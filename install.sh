@@ -41,7 +41,7 @@ getAlgo() {
 
   git checkout ${REPO_BRANCH}
 
-  python -m virtualenv --python=`which python2` .venv
+  python -m virtualenv --python=`which python3` .venv
   . .venv/bin/activate
   python -m pip install -U pip virtualenv
   python -m pip install -r requirements.txt
