@@ -68,6 +68,8 @@ matrix:
         - sudo cp -f tests/lxd-bridge /etc/default/lxd-bridge
         - sudo service lxd restart
         - sudo lxc profile unset default environment.http_proxy
+        - echo "export REPO_SLUG=${TRAVIS_PULL_REQUEST_SLUG:-${TRAVIS_REPO_SLUG}}" >> tests/cloud-init.sh
+        - echo "export REPO_BRANCH={TRAVIS_PULL_REQUEST_BRANCH:-${TRAVIS_BRANCH}}" >> tests/cloud-init.sh
         - echo "curl -s https://raw.githubusercontent.com/${TRAVIS_PULL_REQUEST_SLUG:-${TRAVIS_REPO_SLUG}}/${TRAVIS_PULL_REQUEST_BRANCH:-${TRAVIS_BRANCH}}/install.sh | sudo -E bash -x" >> tests/cloud-init.sh
         - sudo lxc profile set default user.user-data - < tests/cloud-init.sh
         - sudo lxc profile show default
