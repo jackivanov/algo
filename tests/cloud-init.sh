@@ -9,5 +9,5 @@ export LOCAL_DNS=true
 export SSH_TUNNELING=true
 export ENDPOINT=algo.lxc
 export USERS=user1,user2
-export EXTRA_VARS="install_headers=false tests=true apparmor_enabled=false ansible_python_interpreter=/usr/bin/python2"
+export EXTRA_VARS="install_headers=false tests=true apparmor_enabled=false ansible_python_interpreter=python2"
 export ANSIBLE_EXTRA_ARGS="--skip-tags apparmor"
