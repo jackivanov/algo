@@ -75,6 +75,7 @@ matrix:
         - sudo lxc profile set default user.user-data - < tests/cloud-init.sh
         - sudo lxc profile show default
         - sudo lxc launch ubuntu:18.04 algo
+        - - ( sudo lxc exec algo -- tail -f /var/log/cloud-init-output.log & )
         - |
           until sudo lxc exec algo -- test -f /var/lib/cloud/data/result.json; do
             echo 'Cloud init is not finished. Sleep for 30 seconds';
