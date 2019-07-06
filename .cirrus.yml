@@ -6,14 +6,14 @@ task:
   pip_cache:
     folder: ~/.cache/pip
     fingerprint_script: cat requirements.txt
-    populate_script:
+    populate_script: &populate_script
       - pkg install -y python3 bash py36-pip py36-virtualenv base64
       - python3 -m pip install -U pip virtualenv
       - python3 -m pip install -r requirements.txt
   env:
     ALGO_SERVER: localhost
     ALGO_ENDPOINT: 127.0.0.1
-  # install_script:
+  install_script: *populate_script
   script:
     - ./tests/local-deploy.sh
     # - true
