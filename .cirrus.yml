@@ -8,7 +8,7 @@ task:
     fingerprint_script: cat requirements.txt
     populate_script:
       - pkg install -y python3 bash py36-pip py36-virtualenv base64
-      - python3 -m pip install -U pip3 virtualenv
+      - python3 -m pip install -U pip virtualenv
       - python3 -m pip install -r requirements.txt
   env:
     ALGO_SERVER: localhost
