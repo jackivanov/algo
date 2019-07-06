@@ -7,10 +7,10 @@ task:
     ALGO_SERVER: localhost
     ALGO_ENDPOINT: 127.0.0.1
   install_script:
-    - pkg install -y python py27-pip bash
+    - pkg install -y python bash py27-pip py27-virtualenv 
     - python -m virtualenv --python=`which python2` .env
     - source env/bin/activate
-    - python -m pip install -U pip virtualenv --user
-    - python -m pip install -r requirements.txt --user
+    - python -m pip install -U pip virtualenv
+    - python -m pip install -r requirements.txt
   script:
     - ./tests/local-deploy.sh
