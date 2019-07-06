@@ -2,8 +2,13 @@ freebsd_instance:
   image: freebsd-11-2-release-amd64
 
 task:
+  name: FreeBSD local deploy
+  env:
+    ALGO_SERVER: localhost
+    ALGO_ENDPOINT: 127.0.0.1
   install_script:
     - pkg install -y python py27-pip
     - python -m pip install -U pip virtualenv --user
     - python -m pip install -r requirements.txt --user
-  script: true
+  script:
+    - ./tests/local-deploy.sh
