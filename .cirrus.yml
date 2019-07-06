@@ -7,7 +7,7 @@ task:
     ALGO_SERVER: localhost
     ALGO_ENDPOINT: 127.0.0.1
   install_script:
-    - pkg install -y python py27-pip
+    - pkg install -y python py27-pip bash
     - python -m pip install -U pip virtualenv --user
     - python -m pip install -r requirements.txt --user
   script:
