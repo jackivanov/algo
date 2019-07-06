@@ -15,7 +15,7 @@ task:
     ALGO_ENDPOINT: 127.0.0.1
   # install_script:
   script:
-    # - ./tests/local-deploy.sh
-    - true
+    - ./tests/local-deploy.sh
+    # - true
   check_script:
     - true
