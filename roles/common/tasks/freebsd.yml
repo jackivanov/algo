@@ -67,7 +67,7 @@
     - { param: gateway_enable, value: '"YES"' }
     - { param: natd_enable, value: '"YES"' }
     # - { param: natd_interface, value: '"{{ ansible_default_ipv4.device|default() }}"' }
-    # - { param: natd_flags, value: '"-dynamic -m"' }
+    - { param: natd_flags, value: '"-dynamic -m"' }
   notify:
     - restart ipfw
 
