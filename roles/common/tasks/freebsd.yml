@@ -41,6 +41,7 @@
         value: 1
       - item: "{{ 'net.inet6.ip6.forwarding' if ipv6_support else none }}"
         value: 1
+  tags: always
 
 - name: Install tools
   package: name="{{ item }}" state=present
