@@ -18,4 +18,6 @@ task:
     - ./tests/local-deploy.sh -e ansible_python_interpreter=python3
     - ./tests/update-users.sh -e ansible_python_interpreter=python3
   check_script:
-    - true
+    - ipsec status
+    - wg | grep ^interface
+    - host google.com 172.16.0.1
