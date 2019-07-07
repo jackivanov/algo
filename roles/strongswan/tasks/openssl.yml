@@ -230,7 +230,7 @@
     - gencrl is defined
     - gencrl.changed
   notify:
-    - rereadcrls
+    - restart strongswan
 
 - name: Delete the CA key
   file:

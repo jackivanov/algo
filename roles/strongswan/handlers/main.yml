@@ -6,8 +6,3 @@
 
 - name: restart apparmor
   service: name=apparmor state=restarted
-
-- name: rereadcrls
-  shell: ipsec rereadcrls; ipsec purgecrls
-  args:
-    executable: bash
