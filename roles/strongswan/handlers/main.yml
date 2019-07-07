@@ -9,3 +9,5 @@
 
 - name: rereadcrls
   shell: ipsec rereadcrls; ipsec purgecrls
+  args:
+    executable: /bin/bash
