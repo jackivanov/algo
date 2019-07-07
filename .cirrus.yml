@@ -15,7 +15,7 @@ task:
     ALGO_ENDPOINT: 127.0.0.1
   install_script: *populate_script
   script:
-    - ./tests/local-deploy.sh
-    - ./tests/update-users.sh
+    - ./tests/local-deploy.sh -e ansible_python_interpreter=python3
+    - ./tests/update-users.sh -e ansible_python_interpreter=python3
   check_script:
     - true
