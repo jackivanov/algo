@@ -8,5 +8,5 @@ if [ "${DEPLOY}" == "docker" ]
 then
   docker run -it -v $(pwd)/config.cfg:/algo/config.cfg -v ~/.ssh:/root/.ssh -v $(pwd)/configs:/algo/configs -e "DEPLOY_ARGS=${DEPLOY_ARGS}" travis/algo /bin/sh -c "chown -R root: /root/.ssh && chmod -R 600 /root/.ssh && source env/bin/activate && ansible-playbook main.yml -e \"${DEPLOY_ARGS}\" --skip-tags apparmor"
 else
-  ansible-playbook main.yml -e "${DEPLOY_ARGS}" --skip-tags apparmor "${@}"
+  ansible-playbook main.yml -e "${DEPLOY_ARGS}" --skip-tags apparmor
 fi

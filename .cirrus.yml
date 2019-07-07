@@ -16,6 +16,6 @@ task:
   install_script: *populate_script
   script:
     - ./tests/local-deploy.sh
-    # - true
+    - ./tests/update-users.sh
   check_script:
     - true
