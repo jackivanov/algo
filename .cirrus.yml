@@ -16,7 +16,7 @@ task:
   install_script: *populate_script
   script:
     - ln -sf /usr/local/bin/pip3.6 /usr/bin/pip
-    - ./tests/local-deploy.sh -e ansible_python_interpreter=python3
+    - ./tests/local-deploy.sh -e ansible_python_interpreter=python3 -vvvv
     - ./tests/update-users.sh -e ansible_python_interpreter=python3
   check_script:
     - /usr/local/sbin/ipsec status
