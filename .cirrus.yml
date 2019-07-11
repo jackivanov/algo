@@ -7,7 +7,7 @@ task:
     folder: ~/.cache/pip
     fingerprint_script: cat requirements.txt
     populate_script: &populate_script
-      - pkg install -y python3 bash py36-pip py27-pip py36-virtualenv base64
+      - pkg install -y python3 python bash py36-pip py27-pip py27-virtualenv y36-virtualenv base64
       - python3 -m pip install -U pip virtualenv
       - python3 -m pip install -r requirements.txt
   env:
@@ -15,9 +15,8 @@ task:
     ALGO_ENDPOINT: 127.0.0.1
   install_script: *populate_script
   script:
-    - ln -sf /usr/local/bin/pip3.6 /usr/bin/pip
-    - ./tests/local-deploy.sh -e ansible_python_interpreter=python3 -vvvv
-    - ./tests/update-users.sh -e ansible_python_interpreter=python3
+    - ./tests/local-deploy.sh -e ansible_python_interpreter=python2
+    - ./tests/update-users.sh -e ansible_python_interpreter=python2
   check_script:
     - /usr/local/sbin/ipsec status
     - /usr/local/bin/wg | grep ^interface
