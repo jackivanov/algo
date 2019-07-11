@@ -7,7 +7,7 @@ task:
     folder: ~/.cache/pip
     fingerprint_script: cat requirements.txt
     populate_script: &populate_script
-      - pkg install -y python3 bash py36-pip py36-virtualenv base64
+      - pkg install -y python3 bash py36-pip py27-pip py36-virtualenv base64
       - python3 -m pip install -U pip virtualenv
       - python3 -m pip install -r requirements.txt
   env:
