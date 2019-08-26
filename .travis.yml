@@ -60,10 +60,11 @@ stages:
         packages:
           - shellcheck
     script:
-      - pip install ansible-lint
-      - shellcheck algo install.sh
-      - ansible-playbook main.yml --syntax-check
-      - ansible-lint -v *.yml roles/{local,cloud-*}/*/*.yml
+      - echo 123
+      # - pip install ansible-lint
+      # - shellcheck algo install.sh
+      # - ansible-playbook main.yml --syntax-check
+      # - ansible-lint -v *.yml roles/{local,cloud-*}/*/*.yml
 
   - &deploy-local
     stage: Deploy
@@ -119,14 +120,17 @@ matrix:
     #   name: 'Ubuntu 19.04: cloud-init deployment'
     #   env: DEPLOY=cloud-init UBUNTU_VERSION=19.04
 
-    - stage: Local Tests
-      name: Local Tests
-      env:
-        - DEPLOY=1
-        - DEPLOY=2
-      script:
-        - echo $DEPLOY
 
+
+env:
+  - DEPLOY=1
+  - DEPLOY=2
+
+script:
+  - stage: Local Tests
+    name: Local Tests
+    script:
+      - echo $DEPLOY
 
 notifications:
   email: false
