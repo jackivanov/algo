@@ -6,7 +6,7 @@ dist: xenial
 services:
   - docker
 
-addons:
+custom_addons:
   apt:
     sources: &default_sources
       - sourceline: 'ppa:ubuntu-lxc/stable'
@@ -31,16 +31,6 @@ addons:
       - strongswan
       - libstrongswan-standard-plugins
 
-cache:
-  directories:
-    - $HOME/lxc/
-  pip: true
-
-before_cache:
-  - mkdir $HOME/lxc
-  - sudo tar cf $HOME/lxc/cache.tar /var/lib/lxd/images/
-  - sudo chown $USER. $HOME/lxc/cache.tar
-
 custom_scripts:
   provisioning: &provisioning
     - ssh-keygen -f ~/.ssh/id_rsa -t rsa -N ''
@@ -50,6 +40,16 @@ custom_scripts:
     - sudo ./tests/wireguard-client.sh
     - sudo env "PATH=$PATH" ./tests/ipsec-client.sh
     - sudo ./tests/ssh-tunnel.sh
+
+cache:
+  directories:
+    - $HOME/lxc/
+  pip: true
+
+before_cache:
+  - mkdir $HOME/lxc
+  - sudo tar cf $HOME/lxc/cache.tar /var/lib/lxd/images/
+  - sudo chown $USER. $HOME/lxc/cache.tar
 
 stages:
   - &tests-and-linters
@@ -127,10 +127,7 @@ env:
   - DEPLOY=2
 
 script:
-  - stage: Local Tests
-    name: Local Tests
-    script:
-      - echo $DEPLOY
+  - echo $DEPLOY
 
 notifications:
   email: false
