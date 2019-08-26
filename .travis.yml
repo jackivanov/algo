@@ -106,18 +106,27 @@ matrix:
   fast_finish: true
   include:
     - <<: *tests-and-linters
-    - <<: *deploy-local
-      name: 'Ubuntu 18.04: local deployment from docker'
-      env: DEPLOY=docker UBUNTU_VERSION=18.04
-    - <<: *deploy-local
-      name: 'Ubuntu 19.04: local deployment from docker'
-      env: DEPLOY=docker UBUNTU_VERSION=19.04
-    - <<: *deploy-cloudinit
-      name: 'Ubuntu 18.04: cloud-init deployment'
-      env: DEPLOY=cloud-init UBUNTU_VERSION=18.04
-    - <<: *deploy-cloudinit
-      name: 'Ubuntu 19.04: cloud-init deployment'
-      env: DEPLOY=cloud-init UBUNTU_VERSION=19.04
+    # - <<: *deploy-local
+    #   name: 'Ubuntu 18.04: local deployment from docker'
+    #   env: DEPLOY=docker UBUNTU_VERSION=18.04
+    # - <<: *deploy-local
+    #   name: 'Ubuntu 19.04: local deployment from docker'
+    #   env: DEPLOY=docker UBUNTU_VERSION=19.04
+    # - <<: *deploy-cloudinit
+    #   name: 'Ubuntu 18.04: cloud-init deployment'
+    #   env: DEPLOY=cloud-init UBUNTU_VERSION=18.04
+    # - <<: *deploy-cloudinit
+    #   name: 'Ubuntu 19.04: cloud-init deployment'
+    #   env: DEPLOY=cloud-init UBUNTU_VERSION=19.04
+
+    - stage: Local Tests
+      name: Local Tests
+      env:
+        - DEPLOY=1
+        - DEPLOY=2
+      script:
+        - echo $DEPLOY
+
 
 notifications:
   email: false
